@@ -24,12 +24,6 @@ const Login = () => {
 
   const [errorMessage, setErrorMessage] = useState<string>();
 
-  // let formIsValid = false;
-
-  // if (enteredUsernameIsIvalid) {
-  //   formIsValid = true;
-  // }
-
   const usernameInputBlurHandler = (e) => {
     setUsernameTouched(true);
   };
@@ -44,10 +38,6 @@ const Login = () => {
 
     setUsernameTouched(true);
     setPassworsTouched(true);
-
-    // if (!enteredUsernameIsIvalid || !enteredPasswordIsIvalid) {
-    //   return;
-    // }
 
     if (!enteredPasswordIsValid || !enteredUsernameIsValid) {
       return;
