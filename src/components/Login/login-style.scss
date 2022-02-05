@@ -1,5 +1,5 @@
 .login-page {
-  background: url('/public/assets/mountain.jpg');
+  background: url("/public/assets/mountain.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,5 +16,9 @@
     padding: 50px;
     width: 350px;
     height: 400px;
+
+    .error {
+      color: red;
+    }
   }
 }
