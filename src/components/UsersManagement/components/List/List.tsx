@@ -47,7 +47,6 @@ const UpdateModal: FC<IUpdateModal> = ({ item }) => {
                 ...item,
                 email: newEmail,
               });
-              // window.location.reload(false);
               history.push("/");
             }}
           >
