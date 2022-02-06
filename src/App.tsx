@@ -8,13 +8,10 @@ import { Routes } from "./constants";
 import { UserContextProvider } from "./components/UserContext";
 
 import "./style/styles.scss";
-import LoadingScreen from "./components/LoadingScreen";
-import { Suspense } from "react";
 
 const App = () => (
   <Router>
     <Switch>
-      {/* <Suspense fallback={<LoadingScreen />}> */}
       <PublicRoute path={Routes.Login} component={Login} />
       <PrivateRoute
         path={Routes.Users}
@@ -28,7 +25,6 @@ const App = () => (
         path={Routes.Root}
         component={() => <Redirect to={Routes.Users} />}
       />
-      {/* </Suspense> */}
     </Switch>
   </Router>
 );

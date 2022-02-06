@@ -14,14 +14,14 @@ const itemHasOldEmail = (item: IItem, itemList: Array<IItem>) => {
   const todayDate2 = new Date(todayDate);
   const oldEmail2 = new Date(oldEmail);
 
-  function getDiidInDays(date1, date2) {
+  function getDifdInDays(date1, date2) {
     const diffInMs = Math.abs(date2 - date1);
     return diffInMs / (1000 * 60 * 60 * 24);
   }
 
-  const diff = getDiidInDays(todayDate2, oldEmail2);
+  const diffInDays = getDifdInDays(todayDate2, oldEmail2);
 
-  const olderEmails = diff > 30;
+  const olderEmails = diffInDays > 30;
   return olderEmails;
 };
 

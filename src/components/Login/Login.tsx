@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { Routes } from "~/constants";
 import login from "~/services/login";
 import ErrorBlock from "../ErrorBlock";
-import LoadingScreen from "../LoadingScreen";
 
 import "./login-style.scss";
 
@@ -61,7 +60,7 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit} data-testid="Login">
         <h1 className="text-center">Mygom.tech</h1>
         <input
           value={username}
@@ -94,7 +93,6 @@ const Login = () => {
           Login
         </button>
       </form>
-      )
     </div>
   );
 };
