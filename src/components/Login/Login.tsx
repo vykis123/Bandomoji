@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Routes } from "~/constants";
 import login from "~/services/login";
 import ErrorBlock from "../ErrorBlock";
+import LoadingScreen from "../LoadingScreen";
 
 import "./login-style.scss";
 
@@ -34,6 +35,7 @@ const Login = () => {
 
   const handleSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     setErrorMessage(null);
 
     setUsernameTouched(true);
@@ -49,6 +51,7 @@ const Login = () => {
     } catch (error) {
       setErrorMessage(error.message);
     }
+
     setUsername("");
     setUsernameTouched(false);
 
@@ -91,6 +94,7 @@ const Login = () => {
           Login
         </button>
       </form>
+      )
     </div>
   );
 };
