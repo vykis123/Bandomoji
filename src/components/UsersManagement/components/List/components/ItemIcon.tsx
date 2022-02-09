@@ -1,13 +1,12 @@
-import { FC } from 'react';
+import { random } from "faker";
+import { FC } from "react";
 
 interface IItemIcon {
-  name: string,
+  name: string;
 }
 
 const ItemIcon: FC<IItemIcon> = ({ name }) => (
-  <div className="item-icon">
-    {name.substring(0, 2)}
-  </div>
+  <div className="item-icon">{name.substring(0, 2)}</div>
 );
 
 export default ItemIcon;

@@ -1,13 +1,14 @@
-import {FC, useState} from 'react';
-import {IItem} from "~/services/getUserItems";
-import ItemIcon from './components/ItemIcon';
-import updateItem from '../../../../services/updateItem';
-import Modal from 'react-modal';
+import { FC, useState } from "react";
+import { IItem } from "~/services/getUserItems";
+import ItemIcon from "./components/ItemIcon";
+import updateItem from "../../../../services/updateItem";
+import Modal from "react-modal";
 
-import './list-style.scss';
+import "./list-style.scss";
+import { useHistory } from "react-router-dom";
 
 interface IList {
-  items: Array<IItem>,
+  items: Array<IItem>;
 }
 
 interface IUpdateModal {
@@ -16,7 +17,9 @@ interface IUpdateModal {
 
 const UpdateModal: FC<IUpdateModal> = ({ item }) => {
   const [showModal, setShowModal] = useState(false);
-  const [newEmail, setNewEmail] = useState('');
+  const [newEmail, setNewEmail] = useState("");
+
+  const history = useHistory();
 
   return (
     <>
@@ -34,47 +37,48 @@ const UpdateModal: FC<IUpdateModal> = ({ item }) => {
           placeholder="new password"
           className="input"
           value={newEmail}
-          onChange={(event) => setNewEmail(event.target.value)} 
+          onChange={(event) => setNewEmail(event.target.value)}
         />
         <div className="pt-12px text-center">
-          <button className="button" onClick={async () => {
-            await updateItem({
-              ...item,
-              email: newEmail,
-            })
-
-            window.location.reload();
-          }}>Change</button>
-          <button className="button ml-12px" onClick={() => {
-            setShowModal(false)
-          }}>
+          <button
+            className="button"
+            onClick={async () => {
+              await updateItem({
+                ...item,
+                email: newEmail,
+              });
+              history.push("/");
+            }}
+          >
+            Change
+          </button>
+          <button
+            className="button ml-12px"
+            onClick={() => {
+              setShowModal(false);
+            }}
+          >
             Cancel
           </button>
         </div>
       </Modal>
     </>
   );
-}
+};
 
-const List: FC<IList> = ({items}) => (
+const List: FC<IList> = ({ items }) => (
   <ul className="list">
-    {
-      items.map((item) => (
-        <li className="item">
-          <ItemIcon name={item.name}/>
-          <div>
-            <div className="title">
-              {item.name}
-            </div>
-            <div className="description">
-              {item.email}
-            </div>
-          </div>
-          <UpdateModal item={item} />
-        </li>
-      ))
-    }
+    {items.map((item) => (
+      <li className="item" key={item.id}>
+        <ItemIcon name={item.name} />
+        <div>
+          <div className="title">{item.name}</div>
+          <div className="description">{item.email}</div>
+        </div>
+        <UpdateModal item={item} />
+      </li>
+    ))}
   </ul>
-)
+);
 
 export default List;
